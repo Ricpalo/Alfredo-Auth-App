@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
 import { Platform } from '@ionic/angular';
-import { HttpClient, HttpBackend } from '@angular/common/http';
+import { HttpClient, HttpBackend, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { ToastController } from '@ionic/angular';
@@ -49,7 +49,7 @@ export class RestService {
   }
   subida_ficheros_y_datos(_url : string, _datos : any): Observable<any>{
     let encabezados = {
-
+      headers: new HttpHeaders({'sw17-API-KEY' : 'sw17-key'})
     };
     return this.httpClientFiles.post<any>(this.url_mi_api+_url,_datos,encabezados);
   }

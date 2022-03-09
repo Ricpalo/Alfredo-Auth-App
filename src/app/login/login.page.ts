@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from '../services/rest.service';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ModalController, ToastController } from '@ionic/angular';
+import { IonRouterOutlet } from '@ionic/angular';
+import { RegistrarUsuarioComponent } from '../registrar-usuario/registrar-usuario.component';
+import { FormUsuarioPage } from '../form-usuario/form-usuario.page';
+
 
 @Component({
   selector: 'app-login',
@@ -15,7 +19,11 @@ export class LoginPage implements OnInit {
   };
   constructor(
     private servicio: RestService,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private routerOutlet: IonRouterOutlet,
+    private modalController: ModalController,
+    private restService : RestService,
+    private toastController: ToastController
   ) { }
 
   ngOnInit() {
@@ -68,5 +76,29 @@ export class LoginPage implements OnInit {
     });
 
     // this.servicio.iniciarSesion(this.usuario);
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: FormUsuarioPage,
+      initialBreakpoint: 0.6,
+      breakpoints: [0, 0.6, 1]
+    });
+    return await modal.present();
+  }
+
+  closeModal(){
+    this.modalController.dismiss({
+      'dismissed': true
+    }
+    );
+  }
+
+  async showToast(msg) {
+    let toast = await this.toastController.create({
+      message: msg,
+      duration: 5000
+    });
+    toast.present();
   }
 }
