@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Instructores</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button routerLink="/add-instructor">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)"></ion-refresher>
+
+  <ion-row class="ion-text-center">
+    <ion-col size-sm="6" size-md="4" size-lg="3">
+      <ion-card *ngFor="let instructor of instructores">
+        <ion-card-header>
+          <ion-card-title (click)="selectInstructor(instructor);">{{instructor.nombre}}</ion-card-title>
+          <ion-card-subtitle>Email: {{instructor.email}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-button color="primary" (click)="selectInstructor(instructor)">Actualizar</ion-button>
+          <ion-button color="danger" (click)="deleteInstructor(instructor.id)">Eliminar</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>
+ 

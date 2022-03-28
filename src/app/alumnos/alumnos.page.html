@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Alumnos</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button routerLink="/add-alumno">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)"></ion-refresher>
+
+  <ion-row class="ion-text-center">
+    <ion-col size-sm="6" size-md="4" size-lg="3">
+      <ion-card *ngFor="let alumno of alumnos">
+        <ion-card-header>
+          <ion-card-title (click)="selectAlumno(alumno);">{{alumno.nombre}}</ion-card-title>
+          <ion-card-subtitle>Direccion: {{alumno.direccion}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-button color="primary" (click)="selectAlumno(alumno)">Actualizar</ion-button>
+          <ion-button color="danger" (click)="deleteAlumno(alumno.id)">Eliminar</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

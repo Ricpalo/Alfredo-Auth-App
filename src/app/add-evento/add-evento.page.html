@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/eventos"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Agregar Evento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="addEvento();">
+    <ion-item>
+      <ion-label>Fehca de Inicio: </ion-label>
+      <ion-input type="date" [(ngModel)]="evento.fecha_inicio" name="fecha_inicio"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="errores.fecha_inicio != ''">
+      <ion-text color="danger">
+        <h4>{{errores.fecha_inicio}}</h4>
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fecha de Fin: </ion-label>
+      <ion-input type="date" [(ngModel)]="evento.fecha_fin" name="fecha_fin"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="errores.fecha_fin != ''">
+      <ion-text color="danger">
+        <h4>{{errores.fecha_fin}}</h4>
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Instructor: </ion-label>
+
+      <ion-select name="id_instructor" [(ngModel)]="evento.id_instructor" placeholder="Select Instructor">
+        <ion-select-option *ngFor="let instructor of instructores" [value]="instructor.id">{{instructor.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="errores.id_instructor != ''">
+      <ion-text color="danger">
+        <h4>{{errores.id_instructor}}</h4>
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Curso: </ion-label>
+
+      <ion-select name="id_curso" [(ngModel)]="evento.id_curso" placeholder="Select Curso">
+        <ion-select-option *ngFor="let curso of cursos" [value]="curso.id">{{curso.titulo}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="errores.id_curso != ''">
+      <ion-text color="danger">
+        <h4>{{errores.id_curso}}</h4>
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Ubicacion: </ion-label>
+
+      <ion-select name="id_ubicacion" [(ngModel)]="evento.id_ubicacion" placeholder="Select Ubicacion">
+        <ion-select-option *ngFor="let ubicacion of ubicaciones" [value]="ubicacion.id">{{ubicacion.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="errores.id_ubicacion != ''">
+      <ion-text color="danger">
+        <h4>{{errores.id_ubicacion}}</h4>
+      </ion-text>
+    </ion-item>
+
+    <ion-button type="submit" color="medium" expand="block">Registrar</ion-button>
+  </form>
+</ion-content>
+ 

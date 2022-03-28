@@ -1,19 +1,34 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+      Planeación de Cursos
+
+    <ion-buttons slot="end">
+        <ion-button (click)="cerrar_sesion();">Cerrar Sesión</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item routerLink="/ubicaciones">
+      Ubicaciones
+    </ion-item>
 
-  <div id="container">
-    <ion-button (click)="cerrar_sesion();">Cerrar Sesión</ion-button>
-  </div>
+    <ion-item routerLink="/instructores">
+      Instructores
+    </ion-item>
+
+    <ion-item routerLink="/cursos">
+      Cursos
+    </ion-item>
+
+    <ion-item routerLink="/alumnos">
+      Alumnos
+    </ion-item>
+
+    <ion-item routerLink="/eventos">
+      Eventos de Cursos
+    </ion-item>
+  </ion-list>
 </ion-content>
+

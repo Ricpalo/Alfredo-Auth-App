@@ -81,8 +81,8 @@ export class LoginPage implements OnInit {
   async presentModal() {
     const modal = await this.modalController.create({
       component: FormUsuarioPage,
-      initialBreakpoint: 0.6,
-      breakpoints: [0, 0.6, 1]
+      initialBreakpoint: 0.8,
+      breakpoints: [0, 0.8, 1]
     });
     return await modal.present();
   }

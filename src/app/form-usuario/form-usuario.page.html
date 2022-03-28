@@ -6,8 +6,11 @@
     <ion-button expand="block" type="submit">Registrar</ion-button>
   
     <ion-input placeholder="E-mail" [(ngModel)]="usuario.email" name="email"></ion-input>
+    <p class="ion-text-center error">{{errores.email}}</p>
     <ion-input placeholder="Nombre(s)" [(ngModel)]="usuario.nombres" name="nombres"></ion-input>
+    <p class="ion-text-center error">{{errores.nombres}}</p>
     <ion-input placeholder="Apellidos" [(ngModel)]="usuario.apellidos" name="apellidos"></ion-input>
+    <p class="ion-text-center error">{{errores.apellidos}}</p>
   
     <ion-item>
       <ion-label>Genero</ion-label>
@@ -17,8 +20,11 @@
         <ion-select-option value="X">Otro</ion-select-option>
       </ion-select>
     </ion-item>
+    <p class="ion-text-center error">{{errores.genero}}</p>
   
     <ion-input placeholder="Password" type="password" [(ngModel)]="usuario.password" name="password"></ion-input>
+    <p class="ion-text-center error">{{errores.password}}</p>
     <ion-input placeholder="Repetir Password" type="password" [(ngModel)]="usuario.password_confirm" name="password"></ion-input>
+    <p class="ion-text-center error">{{errores.password_confirm}}</p>
   </form>
 </ion-content>
