@@ -9,7 +9,6 @@ export class AuthGuardService  implements CanActivate{
   constructor(
     public servicio : RestService
   ) {
-
   }
   canActivate():boolean{
     return this.servicio.validarSesion();

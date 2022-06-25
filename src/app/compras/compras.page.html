@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" (click)="profile('Usuario')"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Compras</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="ion-text-center">
+    <ion-col size-sm="6" size-md="4" size-lg="3">
+      <ion-card *ngFor="let compra of compras">
+        <ion-card-header>
+          <ion-card-title>Price: {{compra.precio_carrito}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-button color="primary" (click)="selectCompra(compra.id_carrito)">See Purchase</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

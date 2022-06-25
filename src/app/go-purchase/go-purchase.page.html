@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home-usuario" color="dark"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>{{tipo}} Products</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="ion-text-center">
+    <ion-col size-sm="6" size-md="4" size-lg="3">
+      <ion-card class="container" *ngFor="let producto of productos" (click)="showProduct(producto)">
+        <ion-img [src]="producto.imagen"></ion-img>
+        
+        <div class="overlay">
+          <h2>{{producto.nombre_producto}}</h2>
+          <p class="precio">Price: USD ${{producto.precio_producto}}.00</p>
+        </div>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

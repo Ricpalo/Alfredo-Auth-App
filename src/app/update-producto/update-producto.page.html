@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" defaultHref="/productos-vendedor"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Update Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="updateProduct();">
+    <ion-item>
+      <ion-label>Name: </ion-label>
+      <ion-input type="text" [(ngModel)]="producto.nombre_producto" name="titulo"></ion-input>
+    </ion-item>
+
+    <!-- <ion-item *ngIf="errores.titulo != ''">
+      <ion-text color="danger">
+        {{errores.titulo}}
+      </ion-text>
+    </ion-item> -->
+
+    <ion-item>
+      <ion-label>Price: </ion-label>
+      <ion-input type="text" [(ngModel)]="producto.precio_producto" name="precio"></ion-input>
+    </ion-item> 
+
+    <!-- <ion-item *ngIf="errores.precio != ''">
+      <ion-text color="danger">
+        {{errores.precio}}
+      </ion-text>
+    </ion-item> -->
+
+    <ion-button type="submit" color="medium" expand="block">Update</ion-button>
+  </form>
+</ion-content>
+ 

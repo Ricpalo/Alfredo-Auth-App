@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" defaultHref="/home-vendedor"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Your Products</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2>Sake</h2>
+
+  <p class="center" *ngIf="sake.length == 0">You haven't sold any product of this type</p>
+  <ion-row class="ion-text-center">
+    <ion-col size-sm="6" size-md="4" size-lg="3">
+      <ion-card *ngFor="let s of sake">
+        <ion-card-header>
+          <ion-card-title>{{s.nombre_producto}}</ion-card-title>
+          <ion-card-subtitle>Precio: {{s.precio_producto}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-img [src]="s.imagen"></ion-img>
+
+        <ion-card-content>
+          <ion-button color="primary" (click)="selectProducto(s)">Update</ion-button>
+          <ion-button color="danger" (click)="deleteProducto(s.id_producto)">Delete</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <h2>Tea</h2>
+
+  <p class="center" *ngIf="tea.length == 0">You haven't sold any product of this type</p>
+  <ion-row class="ion-text-center">
+    <ion-col size-sm="6" size-md="4" size-lg="3">
+      <ion-card *ngFor="let t of tea">
+        <ion-card-header>
+          <ion-card-title>{{t.nombre_producto}}</ion-card-title>
+          <ion-card-subtitle>Precio: {{t.precio_producto}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-img [src]="t.imagen"></ion-img>
+
+        <ion-card-content>
+          <ion-button color="primary" (click)="selectProducto(t)">Update</ion-button>
+          <ion-button color="danger" (click)="deleteProducto(t.id_producto)">Delete</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <h2>Cupsets</h2>
+
+  <p class="center" *ngIf="cupsets.length == 0">You haven't sold any product of this type</p>
+  <ion-row class="ion-text-center">
+    <ion-col size-sm="6" size-md="4" size-lg="3">
+      <ion-card *ngFor="let cup of cupsets">
+        <ion-card-header>
+          <ion-card-title>{{cup.nombre_producto}}</ion-card-title>
+          <ion-card-subtitle>Precio: {{cup.precio_producto}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-img [src]="cup.imagen"></ion-img>
+
+        <ion-card-content>
+          <ion-button color="primary" (click)="selectProducto(cup)">Update</ion-button>
+          <ion-button color="danger" (click)="deleteProducto(cup.id_producto)">Delete</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <h2>Chopsticks</h2>
+
+  <p class="center" *ngIf="chopsticks.length == 0">You haven't sold any product of this type</p>
+  <ion-row class="ion-text-center">
+    <ion-col size-sm="6" size-md="4" size-lg="3">
+      <ion-card *ngFor="let chop of chopsticks">
+        <ion-card-header>
+          <ion-card-title>{{chop.nombre_producto}}</ion-card-title>
+          <ion-card-subtitle>Precio: {{chop.precio_producto}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-img [src]="chop.imagen"></ion-img>
+
+        <ion-card-content>
+          <ion-button color="primary" (click)="selectProducto(chop)">Update</ion-button>
+          <ion-button color="danger" (click)="deleteProducto(chop.id_producto)">Delete</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <h2>Lifestyle</h2>
+
+  <p class="center" *ngIf="lifestyle.length == 0">You haven't sold any product of this type</p>
+  <ion-row class="ion-text-center">
+    <ion-col size-sm="6" size-md="4" size-lg="3">
+      <ion-card *ngFor="let life of lifestyle">
+        <ion-card-header>
+          <ion-card-title>{{life.nombre_producto}}</ion-card-title>
+          <ion-card-subtitle>Precio: {{life.precio_producto}}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-img [src]="life.imagen"></ion-img>
+
+        <ion-card-content>
+          <ion-button color="primary" (click)="selectProducto(life)">Update</ion-button>
+          <ion-button color="danger" (click)="deleteProducto(life.id_producto)">Delete</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

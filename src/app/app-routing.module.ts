@@ -22,65 +22,61 @@ const routes: Routes = [
     loadChildren: () => import('./form-usuario/form-usuario.module').then( m => m.FormUsuarioPageModule)
   },
   {
-    path: 'ubicaciones',
-    loadChildren: () => import('./ubicaciones/ubicaciones.module').then( m => m.UbicacionesPageModule)
+    path: 'home-vendedor',
+    loadChildren: () => import('./home-vendedor/home-vendedor.module').then( m => m.HomeVendedorPageModule),
   },
   {
-    path: 'instructores',
-    loadChildren: () => import('./instructores/instructores.module').then( m => m.InstructoresPageModule)
+    path: 'home-usuario',
+    loadChildren: () => import('./home-usuario/home-usuario.module').then( m => m.HomeUsuarioPageModule),
   },
   {
-    path: 'cursos',
-    loadChildren: () => import('./cursos/cursos.module').then( m => m.CursosPageModule)
+    path: 'home-admin',
+    loadChildren: () => import('./home-admin/home-admin.module').then( m => m.HomeAdminPageModule)
   },
   {
-    path: 'alumnos',
-    loadChildren: () => import('./alumnos/alumnos.module').then( m => m.AlumnosPageModule)
+    path: 'add-producto',
+    loadChildren: () => import('./add-producto/add-producto.module').then( m => m.AddProductoPageModule)
   },
   {
-    path: 'eventos',
-    loadChildren: () => import('./eventos/eventos.module').then( m => m.EventosPageModule)
+    path: 'productos-vendedor',
+    loadChildren: () => import('./productos-vendedor/productos-vendedor.module').then( m => m.ProductosVendedorPageModule)
   },
   {
-    path: 'add-ubicacion',
-    loadChildren: () => import('./add-ubicacion/add-ubicacion.module').then( m => m.AddUbicacionPageModule)
+    path: 'update-producto',
+    loadChildren: () => import('./update-producto/update-producto.module').then( m => m.UpdateProductoPageModule)
   },
   {
-    path: 'update-ubicacion',
-    loadChildren: () => import('./update-ubicacion/update-ubicacion.module').then( m => m.UpdateUbicacionPageModule)
+    path: 'go-purchase',
+    loadChildren: () => import('./go-purchase/go-purchase.module').then( m => m.GoPurchasePageModule)
   },
   {
-    path: 'add-alumno',
-    loadChildren: () => import('./add-alumno/add-alumno.module').then( m => m.AddAlumnoPageModule)
+    path: 'show-product',
+    loadChildren: () => import('./show-product/show-product.module').then( m => m.ShowProductPageModule)
   },
   {
-    path: 'update-alumno',
-    loadChildren: () => import('./update-alumno/update-alumno.module').then( m => m.UpdateAlumnoPageModule)
+    path: 'carrito-user',
+    loadChildren: () => import('./carrito-user/carrito-user.module').then( m => m.CarritoUserPageModule)
   },
   {
-    path: 'add-instructor',
-    loadChildren: () => import('./add-instructor/add-instructor.module').then( m => m.AddInstructorPageModule)
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },  {
+    path: 'compras',
+    loadChildren: () => import('./compras/compras.module').then( m => m.ComprasPageModule)
   },
   {
-    path: 'update-instructor',
-    loadChildren: () => import('./update-instructor/update-instructor.module').then( m => m.UpdateInstructorPageModule)
+    path: 'compra',
+    loadChildren: () => import('./compra/compra.module').then( m => m.CompraPageModule)
   },
   {
-    path: 'add-curso',
-    loadChildren: () => import('./add-curso/add-curso.module').then( m => m.AddCursoPageModule)
+    path: 'formulario',
+    loadChildren: () => import('./formulario/formulario.module').then( m => m.FormularioPageModule)
   },
-  {
-    path: 'update-curso',
-    loadChildren: () => import('./update-curso/update-curso.module').then( m => m.UpdateCursoPageModule)
-  },
-  {
-    path: 'add-evento',
-    loadChildren: () => import('./add-evento/add-evento.module').then( m => m.AddEventoPageModule)
-  },
-  {
-    path: 'update-evento',
-    loadChildren: () => import('./update-evento/update-evento.module').then( m => m.UpdateEventoPageModule)
-  },
+
+
+
+
+
 
 ];
 

@@ -1,0 +1,64 @@
+<ion-content>
+  <div class="header">
+    <div class="shipping">
+      <h2>Free Shipping From Japan</h2>
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHcAAABPCAMAAADmzqp4AAAAWlBMVEX///+8AC28ACu3AAD9+Pn78/S5ABm4ABO5ABe7ACfv09b36Ovjr7W6ACLbmqDqxci8EivCPUnx29zLY2vQen+3AAnPc3nmu77XjJPBMUTGU1zEQE/CN0n36+vMgXWuAAABQklEQVRoge2YCY7CMAxF46QlLW1KgLLT+19zugiNYFgS5PRLI78LPNlxnNhKCYIgCIIQT1ZVVTavsqvbk5k4tXU3jzSrzzvrNE1oZ3fneoa4G29Luqe0vklsXblC01904VYpta15Zh3Npk1mzS/FC+tAccnTaDvv3miJnE9S2bl/rKdHSp8i4uv7aMeIr/za/eKjlmix59YeTICWyBx4tZl7dYHu0Y63dR1Dsjxm+sipzW1YuH3AlrOmm9Bw+4A5W/X609X9pVzzaTdhxTxhNmzeiDSzJnobnuY+0Vs2L4VW84AmLm0Wc7z9AXO1jirSWzF5l5HepXi/AnW+qHpG3V9Yv0L1Z9R7hHp/Yf8N1P8K9Z+E/Z9R8wJsPoLNg7D5FzXvw/YbCrXPUbD9lULt6xRsPzkA2cfeAOyfBUEQBOGf8AP7mRHs6evcgQAAAABJRU5ErkJggg==">
+    </div>
+
+    <div class="main-header">
+      <div class="main-bar">
+        <div class="main-title">
+          <h1>こんにちは酒</h1>
+          <p>Kon'nichiwa Sake</p>
+        </div>
+
+        <div class="two-icons">
+          <svg (click)="carritoUser()" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-basket" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <polyline points="7 10 12 4 17 10" />
+            <path d="M21 10l-2 8a2 2.5 0 0 1 -2 2h-10a2 2.5 0 0 1 -2 -2l-2 -8z" />
+            <circle cx="12" cy="15" r="2" />
+          </svg>
+
+          <svg (click)="userPage('Usuario')" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <circle cx="12" cy="7" r="4" />
+            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="menu-header">
+        <p (click)="goPurchase('Sake')">Sake</p>
+        <p (click)="goPurchase('Tea')">Tea</p>
+        <p (click)="goPurchase('Cupsets')">Cupsets</p>
+        <p (click)="goPurchase('Chopsticks')">Chopsticks</p>
+        <p (click)="goPurchase('Lifestyle')">Lifestyle</p>
+        <p (click)="contact()">Contact</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="slides">
+    <h2>Latest Products</h2>
+
+    <ion-slides>
+      <ion-slide *ngFor="let new of new_productos">
+        <ion-row class="ion-text-center">
+          <ion-col size-sm="6" size-md="4" size-lg="3">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>{{new.nombre_producto}}</ion-card-title>
+                <ion-card-subtitle>Precio: {{new.precio_producto}}</ion-card-subtitle>
+              </ion-card-header>
+      
+              <ion-img [src]="new.imagen"></ion-img>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-slide>
+    </ion-slides>
+
+    <p>Click the key words on the menu above to visit the store!</p>
+  </div>
+</ion-content>

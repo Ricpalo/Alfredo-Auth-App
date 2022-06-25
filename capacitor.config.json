@@ -1,6 +1,6 @@
 {
-	"appId": "almacen.upsrj.edu.mx",
-	"appName": "almacen",
-	"webDir": "www",
-	"bundledWebRuntime": false
+  "appId": "hellosake.upsrj.edu.mx",
+  "appName": "Hello Sake",
+  "webDir": "www",
+  "bundledWebRuntime": false
 }

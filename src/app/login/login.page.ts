@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../services/rest.service';
 import { LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { IonRouterOutlet } from '@ionic/angular';
-import { RegistrarUsuarioComponent } from '../registrar-usuario/registrar-usuario.component';
 import { FormUsuarioPage } from '../form-usuario/form-usuario.page';
 
 
@@ -29,19 +28,19 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  async iniciar_sesion(){
+  async logIn(){
 
     const loading = await this.loadingController.create({
-      message: 'Autenticando'
+      message: 'Authenticating...'
     })
 
     this.servicio.ejecutar_post('usuarios/api/login', this.usuario).subscribe(res => {
       loading.dismiss();
       if (res.status == '1') {
         this.servicio.mostrar_toast(
-          "Almacen UP",
+          "Kon'nichiwa Sake",
           "success",
-          "Bienvenido " + res.datos.nombre_completo,
+          "Welcome " + res.datos.nombre_completo,
           "top",
           4000
         );
@@ -49,7 +48,7 @@ export class LoginPage implements OnInit {
         this.servicio.iniciarSesion(res.datos);
       } else if (res.status == '0') {
         this.servicio.mostrar_toast(
-          "Almacen UP",
+          "Kon'nichiwa Sake",
           "danger",
           res.mensaje,
           "top",
@@ -57,9 +56,9 @@ export class LoginPage implements OnInit {
         );
       } else {
         this.servicio.mostrar_toast(
-          "Almacen UP",
+          "Kon'nichiwa Sake",
           "danger",
-          "Ocurrio un error de comunicacion",
+          "Communication Error",
           "top",
           4000
         );
@@ -67,22 +66,20 @@ export class LoginPage implements OnInit {
     }, error => {
       loading.dismiss();
       this.servicio.mostrar_toast(
-        "Almacen UP",
+        "Kon'nichiwa Sake",
         "danger",
-        "Ocurrio un error interno",
+        "Fatal Error",
         "top",
         4000
       );
     });
-
-    // this.servicio.iniciarSesion(this.usuario);
   }
 
   async presentModal() {
     const modal = await this.modalController.create({
       component: FormUsuarioPage,
-      initialBreakpoint: 0.8,
-      breakpoints: [0, 0.8, 1]
+      initialBreakpoint: 1,
+      breakpoints: [0, 1, 1]
     });
     return await modal.present();
   }
@@ -92,13 +89,5 @@ export class LoginPage implements OnInit {
       'dismissed': true
     }
     );
-  }
-
-  async showToast(msg) {
-    let toast = await this.toastController.create({
-      message: msg,
-      duration: 5000
-    });
-    toast.present();
   }
 }

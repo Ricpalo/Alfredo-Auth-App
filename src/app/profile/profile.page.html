@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <div *ngIf="tipo == 'Usuario'">
+        <ion-back-button color="dark" defaultHref="home-usuario"></ion-back-button>
+      </div>
+      <div *ngIf="tipo == 'Vendedor'">
+        <ion-back-button color="dark" defaultHref="home-vendedor"></ion-back-button>
+      </div>
+      <div *ngIf="tipo == 'Admin'">
+        <ion-back-button color="dark" defaultHref="home-admin"></ion-back-button>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="tipo == 'Usuario'">
+  <h1>Profile {{tipo}}</h1>
+
+  <div class="botones">
+    <h2 (click)="compras()">My Purchases</h2>
+
+    <h4 (click)="signOut()">Sign Out</h4>
+  </div>
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" (click)="goBack(producto.tipo_producto)"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 class="title">{{nombre}}</h1>
+
+  <h2>USD ${{precio}}.00</h2>
+
+  <ion-img [src]="producto.imagen"></ion-img>
+
+  <ion-item>
+    <ion-label>Cantidad:</ion-label>
+    <ion-select placeholder="Select One" name="cantidad" [(ngModel)]="carritoCompras.cantidad_producto">
+      <ion-select-option value="1">1</ion-select-option>
+      <ion-select-option value="2">2</ion-select-option>
+      <ion-select-option value="3">3</ion-select-option>
+      <ion-select-option value="4">4</ion-select-option>
+      <ion-select-option value="5">5</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button (click)="addCarrito()">Agregar al Carrito</ion-button>
+
+  <h1>{{carrito.id_carrito}}</h1>
+</ion-content>

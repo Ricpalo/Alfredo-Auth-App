@@ -13,16 +13,20 @@ export class FormUsuarioPage implements OnInit {
     email : "",
     nombres : "",
     apellidos : "",
-    genero : "",
+    rol : "",
     password : "",
     password_confirm : ""
+  }
+
+  carrito = {
+    id_usuario: ""
   }
 
   errores = {
     email : "",
     nombres: "",
     apellidos: "",
-    genero: "",
+    rol: "",
     password: "",
     password_confirm: ""
   }
@@ -41,114 +45,60 @@ export class FormUsuarioPage implements OnInit {
     formulario.append('email',this.usuario.email);
     formulario.append('nombres',this.usuario.nombres);
     formulario.append('apellidos',this.usuario.apellidos);
-    formulario.append('genero',this.usuario.genero);
+    formulario.append('rol',this.usuario.rol);
     formulario.append('password',this.usuario.password);
 
     if ( this.usuario.password != this.usuario.password_confirm ) {
-      this.showToast('Passwords no coinciden');
-    } 
-
-    let regex = new RegExp('[\d{9}][@upsrj.edu.mx]{13}');
-    let correo = regex.test(this.usuario.email);
-
-    if (correo) {
-      console.log('Correo Valido');
+      this.showToast('Passwords do not match');
     } else {
-      console.log('Correo no Valido');
-    }
+        this.restService.subida_ficheros_y_datos('usuarios/api/usuario', formulario).subscribe(result => {
+          if(result.status == "0") {
+            if (result.errores.email == 'The E-mail field must contain a unique value.') {
+              this.showToast('This E-mail was used in another account');
+            } else if (result.errores.email != null) {
+              this.errores.email = "E-mail is missing";
+            } else this.errores.email = ""
+            
+            if (result.errores.nombres != null) {
+              this.errores.nombres = "Name is missing";
+            } else this.errores.nombres = ""
+            
+            if (result.errores.apellidos != null) {
+              this.errores.apellidos = "Last Name is missing";
+            }  else this.errores.apellidos = ""
+            
+            if (result.errores.rol != null) {
+              this.errores.rol = "Role is missing";
+            }  else this.errores.rol = ""
+            
+            if (result.errores.password != null) {
+              this.errores.password = "Password is missing";
+            } else this.errores.password = ""
+    
+            if (this.usuario.password_confirm == "") {
+              this.errores.password_confirm = "Please, repeat password";
+            } else this.errores.password_confirm = ""
+          } else {
+              if (this.usuario.rol == "Usuario") {
+                this.restService.ejecutar_get('usuarios/api/last', {}).subscribe(result => {
+                  let last = result.datos.m;
+                  console.log(last);
+                  this.carrito.id_usuario = last;
 
-    let arroba = true;
-    let email = [];
+                  let formulario = new FormData();
+                  formulario.append('id_usuario',this.carrito.id_usuario);
 
-    for (var i = 0; i < this.usuario.email.length; i++) {
-      email[i] = this.usuario.email.charAt(i);
-      
-      if (email[i] == '@') {
-        arroba = false;
-      }
-    }
-  
-    if (arroba) {
-      this.errores.email = "El correo no tiene arroba @";
-    } else {
-      let posArroba = 0;
-
-      if (email[9] != '@') {
-        for ( var i = 0; i < this.usuario.email.length; i++ ) {
-          if ( email[i] == '@' ) {
-            posArroba = i;
-          }
-        }
-
-        if ( posArroba < 9 ) {
-          this.errores.email = "La matrícula debe tener más caracteres";
-        } else {
-          this.errores.email = "La matricula debe tener menos caracteres";
-        }
-
-      } else {
-        var letra = true;
-        const pattern = new RegExp('[0-9]');
-
-        for(var i = 0; i < 9; ++i) {
-          var l = pattern.test(email[i]);
-
-          if (!l) {
-            letra = false;
-            break;
-          } 
-        }
-
-        if (letra) {
-          let complemento = "";
-
-          for ( var i = 10; ; ++i ) {
-            if ( email[i] == null ) break;
-
-            complemento += email[i];
-          }
-
-          if (complemento != "upsrj.edu.mx") {
-            this.errores.email = "El correo debe tener una terminación upsrj.edu.mx";
-          } else if (complemento == "upsrj.edu.mx")  { 
-            this.restService.subida_ficheros_y_datos('usuarios/api/usuario', formulario).subscribe(result => {
-              if(result.status == "0") {
-                if (result.errores.email == 'The E-mail field must contain a unique value.') {
-                  this.showToast('Este correo ya fue ingresado, por favor utiliza otro');
-                } else if (result.errores.email != null) {
-                  this.errores.email = "Por favor, ingresa el correo";
-                } 
-                
-                if (result.errores.nombres != null) {
-                  this.errores.nombres = "Por favor, ingresa los nombres";
-                } 
-                
-                if (result.errores.apellidos != null) {
-                  this.errores.apellidos = "Por favor, ingresa los apellidos";
-                }  
-                
-                if (result.errores.genero != null) {
-                  this.errores.genero = "Por favor, ingresa el genero";
-                }  
-                
-                if (result.errores.password != null) {
-                  this.errores.password = "Por favor, ingresa el password";
-                }
-      
-                if (this.usuario.password_confirm == null) {
-                  this.errores.password_confirm = "Por favor, repite el password";
-                }
+                  this.restService.subida_ficheros_y_datos('carritos/api/carritos', formulario).subscribe(result => {
+                    this.showToast('User and Shopping Cart correctly registered');
+                  });
+                })
               } else {
-                this.errores.email = null;
-                this.showToast('Usuario registrado Correctamente');
+                  this.showToast('User correctly registered');
               }
-              this.router.navigate(['/login']);
-            });
+
+            this.closeModal();
           }
-        } else {
-          this.errores.email= "La matrícula contiene letras";
-        }
-      }
+        });
     }
   }
 

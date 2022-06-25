@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" defaultHref="/home-vendedor"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Add a {{tipo}} Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="addProduct();">
+    <ion-item>
+      <ion-label>Name: </ion-label>
+      <ion-input type="text" [(ngModel)]="producto.nombre" name="name"></ion-input>
+    </ion-item>
+
+    <!-- <ion-item *ngIf="errores.titulo != ''">
+      <ion-text color="danger">
+        {{errores.titulo}}
+      </ion-text>
+    </ion-item> -->
+
+    <ion-item>
+      <ion-label>Price: </ion-label>
+      <ion-input type="text" [(ngModel)]="producto.precio" name="price"></ion-input>
+    </ion-item> 
+
+    <!-- <ion-item *ngIf="errores.duracion != ''">
+      <ion-text color="danger">
+        {{errores.duracion}}
+      </ion-text>
+    </ion-item> -->
+
+    <ion-item>
+      <ion-label>Image</ion-label>
+    </ion-item> 
+
+    <!-- <ion-item *ngIf="errores.precio != ''">
+      <ion-text color="danger">
+        {{errores.precio}}
+      </ion-text>
+    </ion-item> -->
+
+    <ion-item>
+      <ion-button color="primary" expand="block" (click)="seleccionar_icono();">Select picture</ion-button>
+    </ion-item>
+
+    <ion-item *ngIf="icono!=null">
+      <ion-img [src]="icono"></ion-img>
+    </ion-item>
+
+    <ion-button type="submit" color="medium" expand="block" [disabled]="icono==null">Add</ion-button>
+  </form>
+</ion-content>

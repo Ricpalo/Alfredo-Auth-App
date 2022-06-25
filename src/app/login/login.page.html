@@ -1,22 +1,20 @@
-<ion-content class="ion-padding ion-text-center" color="secondary">
-  <ion-grid>
+<ion-content class="ion-padding ion-text-center">
+  <ion-grid class="y-center">
     <ion-row class="ion-justify-content-center">
       <ion-col size-xl="4" size-lg="6" size-md="8" size-sm="12">
-        <form (ngSubmit)="iniciar_sesion();">
-          <img src="./assets/logo/logo.png" class="logo" />
+        <form (ngSubmit)="logIn();">
           <div class="title">
-            <h4>Sistema de control de Almacén</h4>
+            <h2>こんにちは酒</h2>
+            <h4>Kon'nichiwa Sake</h4>
           </div>
           <ion-input placeholder="Email" class="primary-input" [(ngModel)]="usuario.pEmail" name="pEmail"></ion-input>
           <ion-input placeholder="Password" type="password" class="primary-input" [(ngModel)]="usuario.pPassword" name="pPassword"></ion-input>
-          <div class="ion-margin-top ion-text-right forget">
-            <a class="link-a">¿Olvidaste tu contraseña?</a>
-          </div>
+
           <div class="ion-margin-top">
-            <ion-button expand="block" type="submit">Entrar</ion-button>
+            <ion-button expand="block" color="light" type="submit">Sign In</ion-button>
           </div>
           <div class="ion-margin-top ion-text-center forget">
-            <a class="link-a" (click)="presentModal();">¿No tienes cuenta? <b>¡Registrate!</b></a>
+            <a class="link-a" (click)="presentModal();">Don't have an account? <b>Sign Up!</b></a>
           </div>
         </form>
       </ion-col>

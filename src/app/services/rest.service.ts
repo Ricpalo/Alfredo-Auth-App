@@ -12,7 +12,9 @@ import { Storage } from '@ionic/storage-angular';
   providedIn: 'root'
 })
 export class RestService {
-  url_mi_api = "http://localhost/sw17_ws_auth/";
+  // url_mi_api = "http://localhost/HelloSakeAPI/";
+  url_mi_api = "http://192.168.1.236/HelloSakeAPI/";
+
   private httpClientFiles: HttpClient;
   public estatus_sesion =  new BehaviorSubject(false);
 
